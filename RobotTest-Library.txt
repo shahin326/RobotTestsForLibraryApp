@@ -1,0 +1,42 @@
+*** Settings ***
+Library    Selenium2Library   implicit_wait=2.0
+
+*** Variables ***
+
+*** Keywords ***
+
+
+*** comment ***
+
+
+*** Test Cases ***
+Add new book
+      Open Browser    http://localhost:3000/   gc
+      Input Text      id=title          new book
+      Input Text 	    id=author	        somebody
+      Input Text      id=description    something
+      Input Text 	    id=reserved	      No
+      Click Button 		Add
+      Page Should Contain 		new book
+      Page Should Contain 		somebody
+      Page Should Contain 		something
+      Page Should Contain 		No
+
+Edit book
+      Click Button 		Edit
+      Input Text      id=editTitle          changed book
+      Input Text 	    id=editAuthor	        KJ
+      Input Text      id=editDescription    its a book
+      Input Text 	    id=editReserved	      Yes
+      Click Button 		Save
+      Page Should Contain 		changed book
+      Page Should Contain 		KJ
+      Page Should Contain 		its a book
+      Page Should Contain 		Yes
+      Close Browser
+
+Remove book
+      Open Browser    http://localhost:3000/   gc
+      Click Button 		//*[@id="table"]/tbody/tr[last()]/td[5]/button[2]
+      Page Should Not Contain 		changed book
+      Close all browsers
