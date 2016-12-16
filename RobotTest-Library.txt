@@ -1,5 +1,5 @@
 *** Settings ***
-Library    Selenium2Library   implicit_wait=2.0
+Library    Selenium2Library   implicit_wait=6.0
 
 *** Variables ***
 
@@ -11,7 +11,7 @@ Library    Selenium2Library   implicit_wait=2.0
 
 *** Test Cases ***
 Add new book
-      Open Browser    http://localhost:3000/   gc
+      Open Browser    https://librarybyshahinsafari.herokuapp.com/   gc
       Input Text      id=title          new book
       Input Text 	    id=author	        somebody
       Input Text      id=description    something
@@ -36,7 +36,7 @@ Edit book
       Close Browser
 
 Remove book
-      Open Browser    http://localhost:3000/   gc
+      Open Browser    https://librarybyshahinsafari.herokuapp.com/   gc
       Click Button 		//*[@id="table"]/tbody/tr[last()]/td[5]/button[2]
       Page Should Not Contain 		changed book
       Close all browsers
