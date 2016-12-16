@@ -23,7 +23,7 @@ Add new book
       Page Should Contain 		No
 
 Edit book
-      Click Button 		Edit
+      Click Button 		//*[@id="table"]/tbody/tr[last()]/td[5]/button[1]
       Input Text      id=editTitle          changed book
       Input Text 	    id=editAuthor	        KJ
       Input Text      id=editDescription    its a book
@@ -33,10 +33,9 @@ Edit book
       Page Should Contain 		KJ
       Page Should Contain 		its a book
       Page Should Contain 		Yes
-      Close Browser
 
 Remove book
-      Open Browser    https://librarybyshahinsafari.herokuapp.com/   gc
       Click Button 		//*[@id="table"]/tbody/tr[last()]/td[5]/button[2]
+      Sleep           1s
       Page Should Not Contain 		changed book
       Close all browsers
